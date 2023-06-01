@@ -18,7 +18,7 @@ class SecondRoute extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   image: NetworkImage(
-                    "${item['image']}",
+                    "${item.image}",
                   ),
                   fit: BoxFit.cover,
                 )),
@@ -30,7 +30,7 @@ class SecondRoute extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${item['name']}',
+                      '${item.name}',
                       style: TextStyle(
                         fontSize: 35,
                         color: Colors.grey,
@@ -38,7 +38,7 @@ class SecondRoute extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${item['id']}',
+                      '${item.id}',
                       style: TextStyle(
                         fontSize: 35,
                         color: Colors.grey,
@@ -46,7 +46,7 @@ class SecondRoute extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${item['description']} ',
+                      '${item.description} ',
                       style: TextStyle(
                         fontSize: 25,
                         color: Colors.grey,
