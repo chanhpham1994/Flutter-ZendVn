@@ -12,7 +12,10 @@ class B10BT01 extends StatefulWidget {
 class _B10BT01State extends State<B10BT01> {
   final List<CategoryItem> categoryItems = [
     CategoryItem(
-        id: '1', name: 'Thời sự', itemColor: '0xffFF8686', checked: false),
+        id: '1',
+        name: 'Thời sự trong ngay',
+        itemColor: '0xffFF8686',
+        checked: false),
     CategoryItem(
         id: '2', name: 'Thời sự', itemColor: '0xff6BBDCF', checked: false),
     CategoryItem(
@@ -44,12 +47,23 @@ class _B10BT01State extends State<B10BT01> {
       checkedList =
           prefs.setStringList('checkedList', <String>[id]).then((bool success) {
         return checkedList;
-        // print(checkedList);
       });
     });
-
-    // print(checkedList[0]);
   }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   Future<void> getCategory() async {
+  //     final SharedPreferences prefs = await _prefs;
+
+  //     final List<String> items = prefs.getStringList('checkedList');
+  //   }
+
+  //   getCategory();
+  //   // print(checkedList);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +90,17 @@ class _B10BT01State extends State<B10BT01> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        categoryItems[index].name,
-                        style: const TextStyle(
+                      Expanded(
+                        child: Text(
+                          categoryItems[index].name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       InkWell(
                         onTap: () {
