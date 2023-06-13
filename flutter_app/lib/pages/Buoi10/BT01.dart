@@ -36,7 +36,7 @@ class _B10BT01State extends State<B10BT01> {
     // print(id);
     int index = int.parse(id) - 1;
 
-    categoryItems[index].checked = true;
+    categoryItems[index].checked = !categoryItems[index].checked;
 
     final SharedPreferences prefs = await _prefs;
 
