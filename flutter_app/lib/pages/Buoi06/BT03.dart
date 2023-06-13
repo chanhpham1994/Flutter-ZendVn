@@ -49,7 +49,7 @@ class _B6BT03 extends State<B6BT03> {
     // this.readJson();
     super.initState();
     Provider.of<ItemProvider>(context, listen: false).readJson();
-    Provider.of<ItemProvider>(context, listen: false).runList();
+    // Provider.of<ItemProvider>(context, listen: false).runList();
   }
 
   @override

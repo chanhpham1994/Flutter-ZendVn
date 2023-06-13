@@ -9,25 +9,17 @@ class SecondRoute extends StatefulWidget {
 }
 
 class _SecondRouteState extends State<SecondRoute> {
-  final textFieldFocusNode = FocusNode();
-
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _mail = TextEditingController();
   final TextEditingController _pass = TextEditingController();
   final TextEditingController _confirmPass = TextEditingController();
 
-  bool _obscured = false;
-  String passText = '';
-  String confirmPasText = '';
+  bool obscured = true;
 
   void _toggleObscured() {
     setState(() {
-      _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus) {
-        return; // If focus is on text field, dont unfocus
-      }
-      textFieldFocusNode.canRequestFocus =
-          false; // Prevents focus if tap on eye
+      obscured = !obscured;
     });
   }
 
@@ -45,18 +37,9 @@ class _SecondRouteState extends State<SecondRoute> {
             key: _formKey,
             child: Column(
               children: [
-                // Container(
-                //   margin: const EdgeInsets.only(bottom: 30),
-                //   height: 300,
-                //   clipBehavior: Clip.hardEdge,
-                //   decoration:
-                //       BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                //   child: Image.network(
-                //     'https://placeimg.com/640/480/any',
-                //     fit: BoxFit.cover,
-                //   ),
-                // ),
                 InputFormField(
+                  obscureText: false,
+                  controller: _mail,
                   hintText: 'Email',
                   ErrMess: 'VUI LONG NHAP EMAILLL',
                 ),
@@ -64,14 +47,15 @@ class _SecondRouteState extends State<SecondRoute> {
                   height: 20,
                 ),
                 InputFormField(
-                  controller: 'pass',
+                  obscureText: true,
+                  controller: _pass,
                   hintText: 'Password',
                   ErrMess: 'VUI LONG NHAP PASSWORDDD',
                   iconContent: Container(
                     child: GestureDetector(
                       onTap: _toggleObscured,
                       child: Icon(
-                        _obscured
+                        obscured
                             ? Icons.visibility_rounded
                             : Icons.visibility_off_rounded,
                         size: 24,
@@ -83,14 +67,15 @@ class _SecondRouteState extends State<SecondRoute> {
                   height: 20,
                 ),
                 InputFormField(
-                  controller: 'confirmPas',
+                  obscureText: obscured,
+                  controller: _confirmPass,
                   hintText: 'Confirm Password',
                   ErrMess: 'VUI LONG NHAP PASSWORDDD',
                   iconContent: Container(
                     child: GestureDetector(
                       onTap: _toggleObscured,
                       child: Icon(
-                        _obscured
+                        obscured
                             ? Icons.visibility_rounded
                             : Icons.visibility_off_rounded,
                         size: 24,

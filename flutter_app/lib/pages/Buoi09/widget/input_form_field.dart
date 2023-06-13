@@ -5,36 +5,28 @@ class InputFormField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.ErrMess,
-    this.controller,
+    required this.obscureText,
+    required this.controller,
     this.iconContent,
   });
 
-  final hintText, ErrMess, controller, iconContent;
+  final hintText, ErrMess, iconContent;
 
-  final TextEditingController _controll = TextEditingController();
-  // final TextEditingController _confirmPass = TextEditingController();
+  final TextEditingController controller;
+
+  bool obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: _controll,
+      obscureText: obscureText,
+      controller: controller,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return '$ErrMess';
         }
 
-        // if (controller == '_confirmPass') {
-        //   if (value != _pass.text) {
-        //     return 'Not Match';
-        //   }
-        // }
-
         return null;
-      },
-      onChanged: (value) {
-        if (controller == 'pass') {
-          print(value);
-        }
       },
       decoration: InputDecoration(
         // border: InputBorder.none,
